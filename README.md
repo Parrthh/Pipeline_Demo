@@ -6,12 +6,12 @@ This is a full-stack demo project built to explore CI/CD concepts using a React 
 
 ## 📁 Project Structure
 
-ci-cd-sample-app/
-├── client/ # React frontend (Vite)
-├── index.js 
-├── package-lock.json
-├── package.json
-└── README.md
+/Pipeline Demo
+- client # Frontend Files
+- index.js
+- node_modules
+- package-lock.json
+- package.json
 
 ---
 
