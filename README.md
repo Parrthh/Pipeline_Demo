@@ -4,17 +4,6 @@ This is a full-stack demo project built to explore CI/CD concepts using a React 
 
 ---
 
-## 📁 Project Structure
-
-/Pipeline Demo
----- client # Frontend Files
----- index.js
----- node_modules
----- package-lock.json
----- package.json
-
----
-
 ## 🔧 Tech Stack
 
 | Layer       | Technology        |
