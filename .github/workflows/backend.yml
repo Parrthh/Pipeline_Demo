@@ -42,7 +42,7 @@ jobs:
 # Equivalent to what we would do locally
 # If dependencies are broken, this step will fail and CI stops.
       - name: Install dependencies
-        run:  npm Install
+        run:  npm install
 # Currently, just a placeholder step. It just prints a message to the CI log.
 # This proves that the pipeline is working.
       - name: Run backend build/test
