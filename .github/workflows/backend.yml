@@ -1,0 +1,49 @@
+# Name of the workflow. It appears in the GitHub Actions tab and in pull request status checks
+# Think of it as a title of your CI pipeline
+name: Backend CI
+
+# This tells GitHub when to run the workflow
+# Here, it triggers when you push code to the repo
+on:
+  push: 
+# Only triggers workflow when the push is to the main branch
+# Protects other branches from triggering unnecessary workflows
+    branches: [main]
+# Only trigger the workflow if the push includes changes to:
+# This limits the CI runs, saving time and cost(if you are on paid plans)
+    paths:
+      - '**/*.js'
+      - 'package.json'
+      - '.github/workflows/backend.yml'
+# Defines a job inside the workflow
+# A job is a set of steps that run in sequence
+# backend-check: internal name of the job
+jobs:
+  backend-check:
+# Following tells GitHub to run this job on a new virtual Ubuntu machine in the cloud
+# For every job you get a fresh Linux VM for free (up to 2000 minutes / month on free tier)
+    runs-on: ubuntu-latest
+# A job has multiple steps - each step is a task (like npm install, checkout code, etc)
+# Steps run sequentially, and if one fails, the whole job fails
+    steps:
+# This uses the "actions/checkout" GitHub Action to clone the code into the virtual machine
+# Without this, GitHub has no access to the actual project files
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+# This installs Node.js version 18 on the machine
+# actions/setup-node: An offical action from GitHub
+# node-version: '18': Ensures your backend will run correctly if it depends on this version
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+# Runs a shell command on the virtual machine
+# Installs all dependencies listed in root-level 'package.json'
+# Equivalent to what we would do locally
+# If dependencies are broken, this step will fail and CI stops.
+      - name: Install dependencies
+        run:  npm Install
+# Currently, just a placeholder step. It just prints a message to the CI log.
+# This proves that the pipeline is working.
+      - name: Run backend build/test
+        run: echo "No tests yet. CI passed"
