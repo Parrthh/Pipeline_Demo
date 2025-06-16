@@ -1,0 +1,24 @@
+name: Frontend CI
+
+on:
+  push:
+    branch: [main]
+    paths:
+      - 'client/**'
+      - '.github/workflows/frontend.yml'
+
+jobs:
+  frontend-checks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+
+      - name: Install frontend dependencies
+        run:  |
+            cd client
+            npm run build
